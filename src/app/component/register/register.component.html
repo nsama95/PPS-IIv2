@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="register.component.css"/>
+
+</head>
+
+<body>
+
+    <div class="login-card-container">
+        <button value="inicio" [routerLink]="['/main']">Volver a Inicio</button>
+        <div class="login-card">
+            <div class="login-card-logo">
+                <img src="../../../assets/img/logo.png" alt="logo">
+            </div>
+            <br>
+            <div class="login-card-header">
+                <h1>REGISTRO</h1>
+                <br>
+            </div>
+            <form class="login-card-form" [formGroup]="formReg" (ngSubmit)="onSubmit()">
+                <div class="form-item">
+                    <input type="text" placeholder="Usuario" id="emailForm" formControlName="email" style="text-align: center;"
+                    autofocus required>
+                </div>
+                <div class="form-item">
+
+                    <input type="password" placeholder="Contraseña" id="passwordForm" formControlName="password" style="text-align: center;"
+                     required>
+                </div>
+                <div class="form-item-other">
+
+                    <!-- <a href="#">I forgot my password!</a> -->
+
+                </div>
+                <button type="submit" value="Enviar" >Registrate</button>
+            </form>
+            <div class="login-card-footer">
+              Ya tenes una cuenta? <a [routerLink]="['/login']">Inicia Sesion</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

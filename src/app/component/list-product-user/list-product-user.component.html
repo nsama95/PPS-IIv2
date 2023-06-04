@@ -1,0 +1,85 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+    <br>
+<br>
+<button value="inicio" [routerLink]="['/producto']">agregar producto</button>
+<table class="table table-striped ">
+    <thead>
+        <tr>
+            <th scope="col" *ngFor="let titulo of titulosColumnas">
+                {{titulo}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let fila of listProduct">
+            <th>
+                {{fila.name}}
+            </th>
+            <th>
+                {{fila.precio}}
+            </th>
+            <th>
+                {{fila.stock}}
+            </th>
+            <th>
+                {{fila.minStock}}
+            </th>
+            <th>
+                {{fila.category}}
+            </th>
+            <th>
+                <button (click)="modificar(fila)">modificar</button>
+                <button (click)="eliminar(fila)">eliminar</button>
+            </th>
+            
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<div *ngIf="flat">
+<form  [formGroup]="formProductEdit" (ngSubmit)="onSubmit()">
+    <div class="form-item">
+        <label><p>{{this.productEdit.name}}</p></label>
+        <input type="text" placeholder="Nombre" id="nameForm" formControlName="name"  style="text-align: center;">
+    </div>
+    <div class="form-item">
+        <label><p>{{this.productEdit.precio}}</p></label>
+        <input type="text" placeholder="Precio por unidad" id="precioForm" formControlName="precio"  style="text-align: center;"
+        >
+    </div>
+    <div class="form-item">
+        <label><p>{{this.productEdit.stock}}</p></label>
+        <input type="text" placeholder="Stock disponible" id="StockForm" formControlName="stock"  style="text-align: center;"
+        >
+    </div>
+    <div class="form-item">
+        <label><p>{{this.productEdit.minStock}}</p></label>
+        <input type="text" placeholder="Stock Minimo para reposicion" id="minStockForm" formControlName="minStock" style="text-align: center;"
+       >
+    </div>
+
+    <div class="form-item">
+        <label><p>{{this.productEdit.category}}</p></label>
+        <select formControlName="category" >
+            <option>Selecciona la categoria</option>
+            <option *ngFor="let suit of category">{{suit}}</option>
+          </select>
+    </div>
+    <!--div class="form-item">
+        <input type="file" placeholder="Subir imagen" id="precioForm" formControlName="precio" (change)="uploadImagen($event)" style="text-align: center;"
+        autofocus required>
+    </div-->
+    <button type="submit" value="Enviar" >Modificar Producto</button>
+</form>
+</div >
+</body>
+</html>

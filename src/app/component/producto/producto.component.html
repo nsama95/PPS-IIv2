@@ -1,0 +1,24 @@
+<body><div class="row">
+  <!--div class="col-3">
+    <app-product-filter
+      [currentCategory]="currentCategory"
+    ></app-product-filter>
+  </div-->
+  <h1>olis</h1>
+  {{products}}
+  <div class="col">
+    <div class="row" >
+      <ng-container *ngFor="let product of products; let i = index">
+        <div class="col">
+          <app-product-card
+            [product]="product"
+            [showActions]="true"
+           
+          ></app-product-card>
+        </div>
+        <div *ngIf="(i + 1) % cardsPerRow === 0" class="w-100"></div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+</body>

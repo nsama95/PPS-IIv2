@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div class="menu container">
+        <a class="logo">
+          <img class="beuatelogo" [routerLink]="['/main']" src="../../../assets/img/logov2.png" alt="menu">
+        </a>
+        <input type="checkbox" id="menu">
+        <label for="menu">
+          <img class="menu-icono" src="../../../assets/img/barra-de-menus.png" alt="menu">
+        </label>
+        <h1>{{isAdmin}}</h1> 
+        <nav class="navbar">
+                
+        
+
+          <ul  *ngIf="!isAdmin">
+            <li><a *ngIf="user$" (click)="onLogout()">Logout</a></li>
+            <li><a routerLink="/main">Inicio</a></li>  
+            <li><a href="productoUser">Productos</a></li>
+            <li *ngIf="user$&&!isAdmin"><a routerLink="">Pedidos</a></li>
+            <li><a routerLink="/contacto">Contacto</a></li>
+
+              <li><a>
+              <img class="icono" [routerLink]="['/carrito']" src="../../../assets/img/carrito-de-compras (1).png">
+            </a></li>
+            <li><a [routerLink]="['/login']">
+              <img class="icono"  src="../../../assets/img/acceso.png">
+            </a>
+            </li>
+  
+        </ul>
+       
+        <ul *ngIf="isAdmin" >
+          <li><a *ngIf="user$" (click)="onLogout()">Logout</a></li>
+        <li>
+            <button mat-button [matMenuTriggerFor]="producto">Productos</button>
+            <mat-menu #producto="matMenu">
+            <button mat-menu-item [routerLink]="['producto']">Agregar producto</button>
+            <button mat-menu-item  [routerLink]="['listProducto']">Lista de Productos</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button mat-button [matMenuTriggerFor]="pedido">Pedidos</button>
+            <mat-menu #pedido="matMenu">
+            <button mat-menu-item  [routerLink]="['']">Lista de Productos</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button mat-button [matMenuTriggerFor]="empleado">Empleados</button>
+            <mat-menu #empleado="matMenu">
+            <button mat-menu-item [routerLink]="['empleado']">Agregar Empleado</button>
+            <button mat-menu-item  [routerLink]="['listEmpleado']">Lista de Empleados</button>
+            </mat-menu>
+          </li>
+          <li>
+            <button mat-button [matMenuTriggerFor]="categoria">Categorias</button>
+            <mat-menu #categoria="matMenu">
+            <button mat-menu-item [routerLink]="['categoria']">Agregar Categorias</button>
+            <button mat-menu-item  [routerLink]="['listCategoria']">Lista de Categorias</button>
+            </mat-menu>
+          </li>
+            <li><a routerLink="/main">Pagina Principal</a></li>
+        </ul>
+
+            <ng-template #administrador>
+                <ul>
+             
+                  <li>
+                  <button mat-button [matMenuTriggerFor]="producto">Productos</button>
+                  <mat-menu #producto="matMenu">
+                  <button mat-menu-item [routerLink]="['producto']">Agregar producto</button>
+                  <button mat-menu-item  [routerLink]="['listProducto']">Lista de Productos</button>
+                  </mat-menu>
+                </li>
+  
+                <li>
+                  <button mat-button [matMenuTriggerFor]="pedido">Pedidos</button>
+                  <mat-menu #pedido="matMenu">
+                  <button mat-menu-item  [routerLink]="['']">Lista de Productos</button>
+                  </mat-menu>
+                </li>
+                <li>
+                  <button mat-button [matMenuTriggerFor]="empleado">Empleados</button>
+                  <mat-menu #empleado="matMenu">
+                  <button mat-menu-item [routerLink]="['empleado']">Agregar Empleado</button>
+                  <button mat-menu-item  [routerLink]="['listEmpleado']">Lista de Empleados</button>
+                  </mat-menu>
+                </li>
+                  <li><a href="main">Pagina Principal</a></li>
+              </ul>
+              </ng-template>
+          
+           
+        </nav>
+      </div>
+      <br>
+      <br>
+    
+</body>
+</html>
+   

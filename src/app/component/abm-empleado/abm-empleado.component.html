@@ -1,0 +1,37 @@
+<br>
+<br>
+  <div >
+      <div >
+          <div >
+              <h1>Crear nuevo Empleado</h1>          
+          </div>
+          <form  [formGroup]="formEmpleado" (ngSubmit)="onSubmit()">
+              <div class="form-item">
+                  <input type="text" placeholder="Nombre" id="nameForm" formControlName="name" style="text-align: center;"
+                  autofocus required>
+              </div>
+              <div class="form-item">
+                  <input type="email" placeholder="Email" id="emailForm" formControlName="email" style="text-align: center;"
+                  autofocus required>
+              </div>
+              <div class="form-item">
+                <input type="password" placeholder="password" id="passwordForm" formControlName="password" style="text-align: center;"
+                autofocus required>
+            </div>
+              <div class="form-item">
+                  <select formControlName="role">
+                      <option>Selecciona el rol</option>
+                      <option *ngFor="let suit of roles">{{suit}}</option>
+                    </select>
+              </div>
+              <!--div class="form-item">
+                  <input type="file" placeholder="Subir imagen" id="precioForm" formControlName="precio" (change)="uploadImagen($event)" style="text-align: center;"
+                  autofocus required>
+              </div-->
+              <button type="submit" value="Enviar" >Agregar Empleado</button>
+          </form>
+         
+      </div>
+    
+  
+  </div>

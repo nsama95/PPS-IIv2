@@ -1,0 +1,75 @@
+<!--br>
+  <br>
+  <br>
+
+  <h1>Crear nuevo producto</h1>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Fill form field</mat-label>
+      <input  matInput placeholder="Placeholder">
+
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input matInput placeholder="Placeholder">
+    </mat-form-field>
+  </p>
+  <mat-form-field>
+    <mat-label>Input</mat-label>
+    <input matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Select</mat-label>
+    <mat-select>
+      <mat-option value="one">First option</mat-option>
+      <mat-option value="two">Second option</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Textarea</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field--->
+  <br>
+  <br>
+    <div >
+        <div >
+            <div >
+                <h1>Crear nuevo producto</h1>          
+            </div>
+            <form  [formGroup]="formProduct" (ngSubmit)="onSubmit()">
+                <div class="form-item">
+                    <input type="text" placeholder="Nombre" id="nameForm" formControlName="name" style="text-align: center;"
+                    autofocus required>
+                </div>
+                <div class="form-item">
+                    <input type="text" placeholder="Precio por unidad" id="precioForm" formControlName="precio" style="text-align: center;"
+                    autofocus required>
+                </div>
+                <div class="form-item">
+                    <input type="text" placeholder="Stock disponible" id="StockForm" formControlName="stock" style="text-align: center;"
+                    autofocus required>
+                </div>
+                <div class="form-item">
+                    <input type="text" placeholder="Stock Minimo para reposicion" id="minStockForm" formControlName="minStock" style="text-align: center;"
+                    autofocus required>
+                </div>
+    
+                <div class="form-item">
+                    <select formControlName="category">
+                        <option>Selecciona la categoria</option>
+                        <option *ngFor="let suit of category">{{suit}}</option>
+                      </select>
+                </div>
+                <!--div class="form-item">
+                    <input type="file" placeholder="Subir imagen" id="precioForm" formControlName="precio" (change)="uploadImagen($event)" style="text-align: center;"
+                    autofocus required>
+                </div-->
+                <button type="submit" value="Enviar" >Agregar Producto</button>
+            </form>
+           
+        </div>
+      
+    
+    </div>

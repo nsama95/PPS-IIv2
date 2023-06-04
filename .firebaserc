@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "estacionamiento-f17d0": {
+      "hosting": {
+        "pps-ii": [
+          "estacionamiento-f17d0"
+        ]
+      }
+    }
+  }
+}

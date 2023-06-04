@@ -1,0 +1,41 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+    <br>
+<br>
+<button value="inicio" [routerLink]="['/empleado']">agregar empleado</button>
+<table class="table table-striped ">
+    <thead>
+        <tr>
+            <th scope="col" *ngFor="let titulo of titulosColumnas">
+                {{titulo}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let fila of listProduct">
+            <th>
+                {{fila.name}}
+            </th>
+            <th>
+                {{fila.email}}
+            </th>
+            <th>
+                {{fila.role}}
+            </th>
+          
+            <th>
+                <button (click)="eliminar(fila)">eliminar</button>
+            </th>
+            
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
