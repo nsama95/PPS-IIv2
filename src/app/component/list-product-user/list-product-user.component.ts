@@ -14,10 +14,10 @@ export class ListProductUserComponent implements OnInit {
   flat:boolean=false;
   category: any = ['Anillo', 'Cadena', 'Pulsera', 'Scrunch']
   //objectKeys= Object.keys({IProducto:Object});
-  productEdit:IProducto={id:'',name:'',precio:0,stock:'',minStock:'',category:''};
+  productEdit:IProducto={id:'',name:'',precio:0,stock:'',minStock:'',category:'', cantidad:0};
   titulosColumnas = ['nombre', 'precio', 'stock', 'stock minimo','categoria','Acciones'];
-  constructor(private productServices: ProductService) { 
-    this.listProduct=[{id:'',name:'',precio:0,stock:'',minStock:'',category:''}];
+  constructor(private productServices: ProductService) {
+    this.listProduct=[{id:'',name:'',precio:0,stock:'',minStock:'',category:'', cantidad:0}];
     this.formProductEdit=new FormGroup({
       name: new FormControl(),
       precio: new FormControl(),

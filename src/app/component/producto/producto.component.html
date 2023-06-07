@@ -1,9 +1,9 @@
-<body><div class="row">
-  <!--div class="col-3">
+<!-- <body><div class="row">
+  <div class="col-3">
     <app-product-filter
       [currentCategory]="currentCategory"
     ></app-product-filter>
-  </div-->
+  </div>
   <h1>olis</h1>
   {{products}}
   <div class="col">
@@ -13,7 +13,7 @@
           <app-product-card
             [product]="product"
             [showActions]="true"
-           
+
           ></app-product-card>
         </div>
         <div *ngIf="(i + 1) % cardsPerRow === 0" class="w-100"></div>
@@ -21,4 +21,108 @@
     </div>
   </div>
 </div>
+</body> -->
+
+
+<nav class="navbar">
+  <div class="navbar-logo">
+    <i class="fa-solid fa-store fa-2x"></i>
+  </div>
+  <div class="navbar-title">shop</div>
+  <div class="navbar-cart" (click)="onToggleCart()">
+    <div class="navbar-cart-items">
+      <p>0</p>
+    </div>
+    <i class="fa-solid fa-store"></i>
+  </div>
+</nav>
+<div class="cart" [ngClass]="{show:viewCart}">
+  <app-carrito class="app-carrito">
+
+  </app-carrito>
+</div>
+
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+    <br>
+<br>
+<table class="table table-striped ">
+    <thead>
+        <tr>
+            <th scope="col" *ngFor="let titulo of titulosColumnas">
+                {{titulo}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let fila of listProduct">
+            <th>
+                {{fila.name}}
+            </th>
+            <th>
+                {{fila.precio}}
+            </th>
+            <!-- <th>
+                {{fila.stock}}
+            </th> -->
+            <!-- <th>
+                {{fila.minStock}}
+            </th> -->
+            <th>
+                {{fila.category}}
+            </th>
+            <button class="product-footer-button" (click)="addToCart(fila)">
+              Añadir al carrito
+            </button>
+        </tr>
+    </tbody>
+
+</table>
+
+<br>
+<br>
+<div *ngIf="flat">
+<form  [formGroup]="formProductEdit" (ngSubmit)="onSubmit()">
+    <div class="form-item">
+        <label><p>{{this.productEdit.name}}</p></label>
+        <input type="text" placeholder="Nombre" id="nameForm" formControlName="name"  style="text-align: center;">
+    </div>
+    <div class="form-item">
+        <label><p>{{this.productEdit.precio}}</p></label>
+        <input type="text" placeholder="Precio por unidad" id="precioForm" formControlName="precio"  style="text-align: center;"
+        >
+    </div>
+    <div class="form-item">
+        <label><p>{{this.productEdit.stock}}</p></label>
+        <input type="text" placeholder="Stock disponible" id="StockForm" formControlName="stock"  style="text-align: center;"
+        >
+    </div>
+    <div class="form-item">
+        <label><p>{{this.productEdit.minStock}}</p></label>
+        <input type="text" placeholder="Stock Minimo para reposicion" id="minStockForm" formControlName="minStock" style="text-align: center;"
+       >
+    </div>
+
+    <div class="form-item">
+        <label><p>{{this.productEdit.category}}</p></label>
+        <select formControlName="category" >
+            <option>Selecciona la categoria</option>
+            <option *ngFor="let suit of category">{{suit}}</option>
+          </select>
+    </div>
+    <!--div class="form-item">
+        <input type="file" placeholder="Subir imagen" id="precioForm" formControlName="precio" (change)="uploadImagen($event)" style="text-align: center;"
+        autofocus required>
+    </div-->
+    <button type="submit" value="Enviar" >Modificar Producto</button>
+</form>
+</div >
 </body>
+</html>

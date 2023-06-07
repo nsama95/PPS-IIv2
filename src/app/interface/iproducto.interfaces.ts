@@ -5,10 +5,11 @@ id: string,
   stock: string,
   minStock: string,
   category: string,
-  imageUrl?:string
+  imageUrl?:string,
+  cantidad: number;
   /*cantidad: number;
   id: string;
-  // cantidad: number;
+
   title: string;
   description: string;
   price: number;

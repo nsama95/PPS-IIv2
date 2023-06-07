@@ -8,7 +8,7 @@ import { CarritoService } from 'src/app/services/carrito.service';
 })
 export class CarritoComponent implements OnInit {
 
- myCart$ = this.carritoService.myCart$;
+  myCart$ = this.carritoService.myCart$;
   constructor(private carritoService:CarritoService) { }
 
   ngOnInit(): void {
@@ -20,6 +20,10 @@ export class CarritoComponent implements OnInit {
 
   deleteProduct(id:string){
     this.carritoService.deleteProduct(id);
+  }
+
+  finalizePurchase(): void {
+    this.carritoService.completePurchase();
   }
 
   updateUnits(operation:string, id:string){

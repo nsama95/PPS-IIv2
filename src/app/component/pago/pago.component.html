@@ -1,0 +1,36 @@
+<div >
+  <div >
+      <div >
+          <h1>Crear nuevo producto</h1>
+      </div>
+      <form  [formGroup]="formProduct" (ngSubmit)="onSubmit()">
+          <div class="form-item">
+              <input type="text" placeholder="Numero tarjeta" id="numeroForm" formControlName="numero" style="text-align: center;"
+              autofocus required>
+          </div>
+          <div class="form-item">
+              <input type="text" placeholder="Fecha vencimiento" id="fechaVencimientoForm" formControlName="fechaVencimiento" style="text-align: center;"
+              autofocus required>
+          </div>
+          <div class="form-item">
+              <input type="text" placeholder="Nombre completo" id="nombreTarjetaForm" formControlName="nombreTarjeta" style="text-align: center;"
+              autofocus required>
+          </div>
+          <div class="form-item">
+              <input type="text" placeholder="Codigo seguridad" id="codigoSeguridadForm" formControlName="codigoSeguridad" style="text-align: center;"
+              autofocus required>
+          </div>
+          <div class="form-item">
+            <input type="text" placeholder="DNI" id="dni" formControlName="dniForm" style="text-align: center;"
+            autofocus required>
+        </div>
+
+
+
+          <button type="submit" value="Enviar" >Confirmar pago</button>
+      </form>
+
+  </div>
+
+
+</div>

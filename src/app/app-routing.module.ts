@@ -12,6 +12,8 @@ import { ListEmpleadoComponent } from './component/list-empleado/list-empleado.c
 import { AbmEmpleadoComponent } from './component/abm-empleado/abm-empleado.component';
 import { ProductoComponent } from './component/producto/producto.component';
 import { CarritoComponent } from './component/carrito/carrito.component';
+import { PagoComponent } from './component/pago/pago.component';
+import { EnvioComponent } from './component/envio/envio.component';
 
 
 const routes: Routes = [
@@ -29,25 +31,31 @@ const routes: Routes = [
     path: 'carrito', component: CarritoComponent
   },
   {
-    path: 'productoUser', component: ProductoComponent  
+    path: 'productoUser', component: ProductoComponent
   },
   {
     path: 'header', component: HeaderComponent
-  }, 
-  {
-    path: 'producto', component: ABMProductoComponent  
   },
   {
-    path: 'listProducto', component: ListProductUserComponent  
+    path: 'producto', component: ABMProductoComponent
   },
   {
-    path: 'contacto', component: ContactoComponent 
-  },        
-  {
-    path: 'listEmpleado', component: ListEmpleadoComponent  
+    path: 'listProducto', component: ListProductUserComponent
   },
   {
-    path: 'empleado', component: AbmEmpleadoComponent  
+    path: 'contacto', component: ContactoComponent
+  },
+  {
+    path: 'listEmpleado', component: ListEmpleadoComponent
+  },
+  {
+    path: 'empleado', component: AbmEmpleadoComponent
+  },
+  {
+    path: 'pago', component: PagoComponent
+  },
+  {
+    path: 'envio', component: EnvioComponent
   }
 ];
 

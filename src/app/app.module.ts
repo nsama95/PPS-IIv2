@@ -36,6 +36,9 @@ import { ListEmpleadoComponent } from './component/list-empleado/list-empleado.c
 import { CarritoComponent } from './component/carrito/carrito.component';
 import { ProductCardComponent } from './component/producto/product-card/product-card.component';
 import { ProductQuantityComponent } from './component/producto/product-quantity/product-quantity.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PagoComponent } from './component/pago/pago.component';
+import { EnvioComponent } from './component/envio/envio.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { ProductQuantityComponent } from './component/producto/product-quantity/
     CarritoComponent,
     ProductCardComponent,
     ProductQuantityComponent,
-  
+    PagoComponent,
+    EnvioComponent
+
+
   ],
   imports: [
     BrowserModule,
@@ -74,6 +80,7 @@ import { ProductQuantityComponent } from './component/producto/product-quantity/
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
+    HttpClientModule
   ],
   exports: [
     MatButtonModule,

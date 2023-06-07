@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "pps-ii"
+  "defaultProject": "pps-ii",
+  "cli": {
+    "analytics": "f25ea04b-9786-47a5-b020-4191dc598975"
+  }
 }

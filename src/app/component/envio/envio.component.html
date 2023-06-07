@@ -1,0 +1,36 @@
+<div>
+  <div>
+    <div>
+      <h1>Envio</h1>
+    </div>
+    <form [formGroup]="formProduct" (ngSubmit)="onSubmit()">
+      <div class="form-item">
+        <input type="text" placeholder="Direccion" id="direccionForm" formControlName="direccion"
+          style="text-align: center;" autofocus required>
+      </div>
+      <div class="form-item">
+        <input type="text" placeholder="Localidad" id="localidadForm" formControlName="localidad"
+          style="text-align: center;" autofocus required>
+      </div>
+      <div class="form-item">
+        <input type="text" placeholder="Codigo postal" id="codigopostalForm" formControlName="codigopostal"
+          style="text-align: center;" autofocus required>
+      </div>
+      <div placeholder="Localidad" id="localidadForm" formControlName="localidad">
+
+        <select formControlName="localidad" (change)="seleccionarLocalidad()">
+          <option value="">Seleccionar Localidad</option>
+          <option value="Localidad A">Localidad A</option>
+          <option value="Localidad B">Localidad B</option>
+          <option value="Localidad C">Localidad C</option>
+        </select>
+
+        <p>Valor del envío: {{ envio }}</p>
+      </div>
+
+      <button type="submit" value="Enviar" [routerLink]="['/pago']">Confirmar envio y pagar</button>
+    </form>
+
+    <!-- <button class="cart-btn" [routerLink]="['/pago']">Finalizar compra (pago)</button> -->
+  </div>
+</div>

@@ -3,73 +3,78 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Producto } from '../interface/producto.interfaces';
-
+// import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
+import { IProducto } from "../interface/iproducto.interfaces";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarritoService {
 
-  baseUrl = 'https://api.escuelajs.co/api/v1/';
   //lista carrito
-  private myList: Producto[] = [];
+  private myList: IProducto[] = [];
   //carrito observable
-  private myCart = new BehaviorSubject<Producto[]>([])
+  private myCart = new BehaviorSubject<IProducto[]>([])
   myCart$ = this.myCart.asObservable();
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private db: AngularFirestore) {
 
-  getAllProducts(): Observable<Producto[]> {
-
-    
-    const response = this.httpClient.get<Producto[]>(`${this.baseUrl}products`)
-    return response;
   }
 
-  addProduct(product:Producto){
-    //ver si la lista esta vacia o no
-    if (this.myList.length === 0){
-      //producto nuevo o sea 1
+
+
+  getAllProducts(): Observable<IProducto[]> {
+
+    return this.db
+      .collection('Productos')
+      .valueChanges({ idField: 'id' }) as Observable<IProducto[]>;
+  }
+
+
+  addProduct(product: IProducto) {
+    if (this.myList.length === 0) {
       product.cantidad = 1;
-      //añado un producto y lo emito
       this.myList.push(product);
-      this.myCart.next(this.myList);
-    }else{
-      //buscar si este producto existe en mi carrito en caso de que ya haya productos
-      const productMod = this.myList.find((element) =>{
-        return element.id === product.id;
-      })
-      if(productMod){
-        productMod.cantidad = productMod.cantidad + 1;
-        this.myCart.next(this.myList);
-      }else{
-        //si no estaba el producto por ende es uno nuevo
+    } else {
+      const productMod = this.myList.find((element) => element.id === product.id);
+      if (productMod) {
+        productMod.stock += 1;
+      } else {
         product.cantidad = 1;
         this.myList.push(product);
-        this.myCart.next(this.myList);
       }
     }
 
+    this.myCart.next(this.myList);
   }
 
-  deleteProduct(id:string){
-    this.myList = this.myList.filter((product) =>{
+
+  completePurchase() {
+    this.db.collection('Carrito').add({ products: this.myList });
+    // Limpiar el carrito después de completar la compra
+    this.myList = [];
+    this.myCart.next([]);
+  }
+
+  deleteProduct(id: string) {
+    this.myList = this.myList.filter((product) => {
       return product.id != id;
     })
     this.myCart.next(this.myList);
   }
 
-  findProductById(id:string){
+  findProductById(id: string) {
     return this.myList.find((elemento) => {
       return elemento.id === id;
     })
   }
 
-  totalCarrito(){
-    const total = this.myList.reduce(function(acc, product){
-      return acc + (product.cantidad * product.price);
-    },0)
+  totalCarrito() {
+    const total = this.myList.reduce(function (acc, product) {
+      return acc + (product.cantidad * product.precio);
+    }, 0)
     return total;
   }
 
